@@ -9,5 +9,9 @@ This project is a Node.js automation script built with Playwright that redeems a
 2. Install Playwright browsers (required once):
    `npx playwright install`
 3. Populate playerId.js with the player IDs you want to redeem the gift code for.
-4. Run the script with the gift code:
+
+<img width="394" height="197" alt="image" src="https://github.com/user-attachments/assets/caa8d93f-9565-4333-ad79-96641e537ce3" />
+
+
+5. Run the script with the gift code:
    `npm run redeem -- --giftcode=XXXXX`
