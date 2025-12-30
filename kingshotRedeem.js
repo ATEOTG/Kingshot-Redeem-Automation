@@ -72,9 +72,11 @@ async function redeemGiftCode(page, giftCode, playerId) {
   } else if (errorCode == 40008) {
     console.log(`Gift Code already claimed for playerId - ${playerId}`);
     result[playerId] = "ALREADY CLAIMED";
-  } else {
+  } else if (errorCode == 20000) {
     console.log(`Gift code claimed for player - ${playerId}`);
     result[playerId] = "SUCCESSFULLY CLAIMED";
+  } else {
+    console.log(`Unhandled errorCode - ${errorCode}`);
   }
 }
 
