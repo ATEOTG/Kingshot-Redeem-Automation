@@ -1,0 +1,15 @@
+{
+  "name": "kingshotredeem",
+  "version": "1.0.0",
+  "description": "Allows users to redeem giftcards for their alliance in an automated way",
+  "main": "kingshotRedeem.js",
+  "type": "module",
+  "scripts": {
+    "redeem": "node kingshotRedeem.js"
+  },
+  "author": "ATEOTG",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.57.0"
+  }
+}
