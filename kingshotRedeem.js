@@ -24,7 +24,7 @@ async function waitingButtonActionCompletion(page, endpoint, button) {
   const [response] = await Promise.all([
     page.waitForResponse(
       (r) => r.url().includes(endpoint) && r.request().method() === "POST",
-      {}
+      {},
     ),
     button.click(),
   ]);
@@ -41,7 +41,7 @@ async function loginAccount(page, playerId) {
   const response = await waitingButtonActionCompletion(
     page,
     "/api/player",
-    loginBtn
+    loginBtn,
   );
 
   const errorCode = response.err_code;
@@ -60,7 +60,7 @@ async function redeemGiftCode(page, giftCode, playerId) {
   const response = await waitingButtonActionCompletion(
     page,
     "/api/gift_code",
-    confirmGiftCodeBtn
+    confirmGiftCodeBtn,
   );
 
   const errorCode = response.err_code;
@@ -94,11 +94,13 @@ async function redemption(giftCode) {
 
   await page.goto(baseUrl, { waitUntil: "networkidle" });
 
-  for (const playerId of PLAYER_IDS) {
-    await loginAccount(page, playerId);
-    await redeemGiftCode(page, giftCode, playerId);
+  const length = PLAYER_IDS.length;
+  for (let i = 0; i < length; i++) {
+    await loginAccount(page, PLAYER_IDS[i]);
+    await redeemGiftCode(page, giftCode, PLAYER_IDS[i]);
     await logoutAccount(page);
     await sleep(jitter(1000, 2000));
+    console.log(`${i + 1}/${length} Processed`);
   }
 
   await browser.close();
