@@ -15,3 +15,5 @@ This project is a Node.js automation script built with Playwright that redeems a
 
 5. Run the script with the gift code:
    `npm run redeem -- --giftcode=XXXXX`
+
+*Note that there has been cases where redeeming too quickly after the code has been release will "redeem" the code but will not show up in the mail. In cases like these try re-running the script at a later time for it to show up in the mail. Recommended to run the script around an hour of a new gift code releasing*
